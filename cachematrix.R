@@ -4,13 +4,40 @@
 ## as a means of caching the calculation.
 ## =============================================================================
 
-## Write a short comment describing this function
 
+#' =============================================================================
+#' Creates a special object that is used to cache the inverse of a matrix
+#' 
+#' @param x A matrix object to be inverted
+#' @return A list of functions (set, get, setInverse, getInverse)
+#' @examples
+#' m = matrix(rnorm(12), 4,4)
+#' makeCacheMatrix(m)
+#' 
+#' =============================================================================
 makeCacheMatrix <- function(x = matrix()) {
-
+    i <- NULL              # Stores the inverse value
+    
+    # ------------------------- Create the embeded function to set up the matrix
+    set <- function(y) {
+        x <<- y
+        i <<- NULL
+    }
+    
+    # ---------------------------- Create the embeded function to get the matrix
+    get <- function() x
+    
+    # --------------------------- Create the embeded function to set the Inverse
+    setInverse <- function(inverse) i <<- inverse
+    
+    
+    # --------------------------- Create the embeded function to get the Inverse
+    getInverse <- function() i
+    
+    # --------------------------------- Return a list of al the nested functions
+    list(set = set, get = get, setInverse = setInverse, getInverse = getInverse)
 }
 
-# Another comment in the middle of the text, just to see how Git will deal with it. 
 
 ## Write a short comment describing this function
 
