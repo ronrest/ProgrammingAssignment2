@@ -1,7 +1,8 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-# First edit, just to see if committing to Git will work. 
+## =============================================================================
+## Calculating the inverse of matrices is computationally expensive. In order to 
+## avoid calculating this repeatedly, this collection of functions can be used  
+## as a means of caching the calculation.
+## =============================================================================
 
 ## Write a short comment describing this function
 
